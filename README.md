@@ -44,6 +44,7 @@ cd /share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/volumes
 
 ln -s /share/CACHEDEV3_DATA/Media-1/downloaded downloaded
 
+chown pampi:everyone /share/CACHEDEV3_DATA/Media-1/downloaded
 
 ### Moving download folder to SSD
 ssh -> sudo -i
@@ -62,3 +63,8 @@ ln -s /share/CACHEDEV1_DATA/Public/rtorrent/logs logs
 ln -s /share/CACHEDEV1_DATA/Public/rtorrent/session session
 ln -s /share/CACHEDEV1_DATA/Public/rtorrent/watch watch
 
+chown pampi:everyone /share/CACHEDEV1_DATA/Public/rtorrent
+chown pampi:everyone /share/CACHEDEV1_DATA/Public/rtorrent/downloading
+chown pampi:everyone /share/CACHEDEV1_DATA/Public/rtorrent/logs
+chown pampi:everyone /share/CACHEDEV1_DATA/Public/rtorrent/session
+chown pampi:everyone /share/CACHEDEV1_DATA/Public/rtorrent/watch
