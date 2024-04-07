@@ -86,8 +86,9 @@ method.insert = d.data_path, simple,\
 method.insert = d.session_file, simple, "cat=(session.path), (d.hash), .torrent"
 
 # Watch directories (add more as you like, but use unique schedule names)
-schedule2 = watch_start, 10, 10, ((load.start_verbose, (cat, (cfg.watch), "start/*.torrent")))
-schedule2 = watch_load, 11, 10, ((load.verbose, (cat, (cfg.watch), "load/*.torrent")))
+#schedule2 = watch_start, 10, 10, ((load.start_verbose, (cat, (cfg.watch), "start/*.torrent")))
+#schedule2 = watch_load, 11, 10, ((load.verbose, (cat, (cfg.watch), "load/*.torrent")))
+schedule2 = watch, 10, 10, ((load.start_verbose, (cat, (cfg.watch), "*.torrent")))
 
 method.insert = d.get_finished_dir, simple, "cat=/home/rtorrent/rtorrent/downloaded/,$d.custom1="
 method.insert = d.get_data_full_path, simple, "branch=((d.is_multi_file)),((cat,(d.directory))),((cat,(d.directory),/,(d.name)))"
