@@ -3,13 +3,14 @@
 ## Overview
 Ultra-minimalistic rtorrent client running on Alpine Linux.
 CLI-only with no GUI, web access, or XMLRPC support.
-Created specifically because QNAP Download Station fails to bypass dead torrents, halting downloads after 30 failures.
-This lightweight image is optimized to manage thousands of loaded torrents efficiently. 
+Intended to replace QNAP's Download station as that one doesn't support watch folders and halts after downloading 30 concurrent dead torrents.
+This lightweight image is optimized to manage thousands of loaded torrents efficiently.
+Done based on rtorrent's official documentation.
 
 ## Building
 docker build -t rtorrent-qnap-nas .
 
-## Executing
+## Executing (replace /Users/danielrajmon/rtorrent/* folders)
 docker run -d \
   -v /Users/danielrajmon/rtorrent/session:/home/rtorrent/rtorrent/session \
   -v /Users/danielrajmon/rtorrent/watch:/home/rtorrent/rtorrent/watch \
