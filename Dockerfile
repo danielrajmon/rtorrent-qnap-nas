@@ -16,6 +16,7 @@ COPY rtorrent.rc "/home/rtorrent/.rtorrent.rc"
 VOLUME ["/home/rtorrent/rtorrent/downloaded", \
         "/home/rtorrent/rtorrent/downloading", \
         "/home/rtorrent/rtorrent/logs", \
+        "/home/rtorrent/rtorrent/session", \
         "/home/rtorrent/rtorrent/watch"]
 
 EXPOSE 6881
