@@ -1,9 +1,11 @@
 FROM alpine
 
 RUN apk add --no-cache rtorrent && \
-    apk add --no-cache screen
+    apk add --no-cache screen && \
+    adduser rtorrent -D && \
+    echo "rtorrent:alma1234" | chpasswd
 
-COPY rtorrent.rc "/root/.rtorrent.rc"
+COPY rtorrent.rc "/home/rtorrent/.rtorrent.rc"
 
 
 # Stop docker container from exiting
