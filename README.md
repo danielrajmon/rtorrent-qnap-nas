@@ -15,7 +15,6 @@ docker run -d \
   -v /Users/danielrajmon/rtorrent/downloaded:/home/rtorrent/rtorrent/downloaded \
   -v /Users/danielrajmon/rtorrent/downloading:/home/rtorrent/rtorrent/downloading \
   -v /Users/danielrajmon/rtorrent/logs:/home/rtorrent/rtorrent/logs \
-  -v /Users/danielrajmon/rtorrent/session:/home/rtorrent/rtorrent/session \
   -v /Users/danielrajmon/rtorrent/watch:/home/rtorrent/rtorrent/watch \
   rtorrent-qnap-nas
 
