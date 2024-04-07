@@ -26,7 +26,7 @@ EXPOSE 50000
 USER rtorrent
 
 # Stop docker container from exiting
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+ENTRYPOINT ["cat"]
 
 #ENTRYPOINT ["screen", "-m", "rtorrent"]
 
