@@ -21,7 +21,6 @@ VOLUME ["/home/rtorrent/rtorrent/downloaded", \
 
 EXPOSE 6881
 EXPOSE 6881/udp
-EXPOSE 16891
 EXPOSE 50000
 
 USER rtorrent
