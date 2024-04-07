@@ -3,7 +3,6 @@ FROM alpine
 RUN apk add --no-cache rtorrent && \
     apk add --no-cache screen && \
     adduser rtorrent -D && \
-    echo "rtorrent:alma1234" | chpasswd && \
     mkdir -p /home/rtorrent/rtorrent && \
     mkdir /home/rtorrent/rtorrent/downloaded && \
     mkdir /home/rtorrent/rtorrent/downloading && \
