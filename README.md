@@ -68,3 +68,10 @@ chown pampi:everyone /share/CACHEDEV1_DATA/Public/rtorrent/downloading
 chown pampi:everyone /share/CACHEDEV1_DATA/Public/rtorrent/logs
 chown pampi:everyone /share/CACHEDEV1_DATA/Public/rtorrent/session
 chown pampi:everyone /share/CACHEDEV1_DATA/Public/rtorrent/watch
+
+## Publishing
+git log -1 --pretty=%H
+docker image build -t danielrajmon/rtorrent-qnap-nas:COMMIT_NUMBER --build-arg VERSION=1.5 .
+docker image tag danielrajmon/rtorrent-qnap-nas:COMMIT_NUMBER danielrajmon/rtorrent-qnap-nas:latest
+docker image push danielrajmon/rtorrent-qnap-nas:COMMIT_NUMBER
+docker image push danielrajmon/rtorrent-qnap-nas:latest
