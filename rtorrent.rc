@@ -19,8 +19,7 @@ execute.throw = sh, -c, (cat,\
     "mkdir -p \"",(cfg.download),"\" ",\
     "\"",(cfg.logs),"\" ",\
     "\"",(cfg.session),"\" ",\
-    "\"",(cfg.watch),"/load\" ",\
-    "\"",(cfg.watch),"/start\" ")
+    "\"",(cfg.watch),"\" ")
 
 # Listening port for incoming peer traffic (fixed; you can also randomize it)
 network.port_range.set = 50000-50000
