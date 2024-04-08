@@ -89,3 +89,9 @@ docker image build -t danielrajmon/rtorrent-qnap-nas:COMMIT_NUMBER --build-arg V
 docker image tag danielrajmon/rtorrent-qnap-nas:COMMIT_NUMBER danielrajmon/rtorrent-qnap-nas:latest
 docker image push danielrajmon/rtorrent-qnap-nas:COMMIT_NUMBER
 docker image push danielrajmon/rtorrent-qnap-nas:latest
+
+## TODO
+- Autostart rtorrent in screen
+- Set download speed limit
+- Optimize number of concurrent connections
+- Delete lock file on restart if it exists
