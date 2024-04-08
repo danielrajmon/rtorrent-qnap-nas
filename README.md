@@ -38,11 +38,13 @@ Container station -> Volumes ->
 ### Moving some folders to HDD
 ssh -> sudo -i
 
-mv ./downloaded /share/CACHEDEV3_DATA/Media-1/
-
 cd /share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/volumes
 
-ln -s /share/CACHEDEV3_DATA/Media-1/downloaded downloaded
+mv ./downloaded/_data /share/CACHEDEV3_DATA/Media-1/downloaded
+
+cd downloaded
+ln -s /share/CACHEDEV3_DATA/Media-1/downloaded _data
+cd ..
 
 chown pampi:everyone /share/CACHEDEV3_DATA/Media-1/downloaded
 
@@ -53,23 +55,35 @@ mkdir /share/CACHEDEV1_DATA/Public/rtorrent
 
 cd /share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/volumes
 
-mv ./downloading /share/CACHEDEV1_DATA/Public/rtorrent/
-mv ./logs /share/CACHEDEV1_DATA/Public/rtorrent/
-mv ./session /share/CACHEDEV1_DATA/Public/rtorrent/
-mv ./watch /share/CACHEDEV1_DATA/Public/rtorrent/
+mv ./downloading/_data /share/CACHEDEV1_DATA/Public/rtorrent/downloading
+mv ./logs/_data /share/CACHEDEV1_DATA/Public/rtorrent/logs
+mv ./session/_data /share/CACHEDEV1_DATA/Public/rtorrent/session
+mv ./watch/_data /share/CACHEDEV1_DATA/Public/rtorrent/watch
 
-ln -s /share/CACHEDEV1_DATA/Public/rtorrent/downloading downloading
-ln -s /share/CACHEDEV1_DATA/Public/rtorrent/logs logs
-ln -s /share/CACHEDEV1_DATA/Public/rtorrent/session session
-ln -s /share/CACHEDEV1_DATA/Public/rtorrent/watch watch
+cd downloading
+ln -s /share/CACHEDEV1_DATA/Public/rtorrent/downloading _data
+cd ..
 
+cd logs
+ln -s /share/CACHEDEV1_DATA/Public/rtorrent/logs _data
+cd ..
+
+cd session
+ln -s /share/CACHEDEV1_DATA/Public/rtorrent/session _data
+cd ..
+
+cd watch
+ln -s /share/CACHEDEV1_DATA/Public/rtorrent/watch _data
+cd ..
+
+### Setting folder permissions
 chown pampi:everyone /share/CACHEDEV1_DATA/Public/rtorrent
 chown pampi:everyone /share/CACHEDEV1_DATA/Public/rtorrent/downloading
 chown pampi:everyone /share/CACHEDEV1_DATA/Public/rtorrent/logs
 chown pampi:everyone /share/CACHEDEV1_DATA/Public/rtorrent/session
 chown pampi:everyone /share/CACHEDEV1_DATA/Public/rtorrent/watch
 
-## Publishing
+## Publishing for QNAP NAS
 git log -1 --pretty=%H
 docker image build -t danielrajmon/rtorrent-qnap-nas:COMMIT_NUMBER --build-arg VERSION=1.5 --platform linux/amd64 .
 docker image tag danielrajmon/rtorrent-qnap-nas:COMMIT_NUMBER danielrajmon/rtorrent-qnap-nas:latest

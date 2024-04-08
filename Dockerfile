@@ -27,7 +27,3 @@ USER rtorrent
 
 # Stop docker container from exiting
 ENTRYPOINT ["tail", "-f", "/dev/null"]
-
-#ENTRYPOINT ["screen", "-m", "rtorrent"]
-
-#CMD ["rtorrent", "&"]
