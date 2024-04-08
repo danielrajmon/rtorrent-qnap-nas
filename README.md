@@ -70,6 +70,7 @@ chown pampi:everyone /share/CACHEDEV1_DATA/Public/rtorrent/session
 chown pampi:everyone /share/CACHEDEV1_DATA/Public/rtorrent/watch
 
 ## Publishing
+docker build --platform linux/amd64 .
 git log -1 --pretty=%H
 docker image build -t danielrajmon/rtorrent-qnap-nas:COMMIT_NUMBER --build-arg VERSION=1.5 .
 docker image tag danielrajmon/rtorrent-qnap-nas:COMMIT_NUMBER danielrajmon/rtorrent-qnap-nas:latest
