@@ -2,6 +2,7 @@ FROM alpine
 
 RUN apk add --no-cache rtorrent && \
     apk add --no-cache screen && \
+    apk add --no-cache nano && \
     adduser rtorrent -D && \
     mkdir -p /home/rtorrent/rtorrent && \
     mkdir /home/rtorrent/rtorrent/downloaded && \

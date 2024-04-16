@@ -25,8 +25,7 @@ execute.throw = sh, -c, (cat,\
 network.port_range.set = 50000-50000
 network.port_random.set = no
 
-# Tracker-less torrent and UDP tracker support
-# (conservative settings for 'private' trackers, change for 'public')
+# Tracker-less torrent and UDP tracker support (conservative settings for 'private' trackers, change for 'public')
 dht.mode.set = disable
 protocol.pex.set = no
 trackers.use_udp.set = no
@@ -35,24 +34,21 @@ trackers.use_udp.set = no
 throttle.max_uploads.set = 100
 throttle.max_uploads.global.set = 250
 
-throttle.min_peers.normal.set = 20
+throttle.min_peers.normal.set = 1
 throttle.max_peers.normal.set = 60
 throttle.min_peers.seed.set = 30
 throttle.max_peers.seed.set = 80
-trackers.numwant.set = 80
+trackers.numwant.set = 40
 
 protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
 
-# Limits for file handle resources, this is optimized for
-# an `ulimit` of 1024 (a common default). You MUST leave
-# a ceiling of handles reserved for rTorrent's internal needs!
-network.http.max_open.set = 50
-network.max_open_files.set = 600
-network.max_open_sockets.set = 300
+# Limits for file handle resources, this is optimized for an `ulimit` of 1024 (a common default). You MUST leave a ceiling of handles reserved for rTorrent's internal needs!
+network.http.max_open.set = 500
+network.max_open_files.set = 6000
+network.max_open_sockets.set = 3000
 
-# Memory resource usage (increase if you have a large number of items loaded,
-# and/or the available resources to spend)
-pieces.memory.max.set = 1800M
+# Memory resource usage (increase if you have a large number of items loaded, and/or the available resources to spend)
+pieces.memory.max.set = 3600M
 network.xmlrpc.size_limit.set = 4M
 
 # Basic operational settings (no need to change these)
@@ -85,20 +81,12 @@ method.insert = d.data_path, simple,\
 method.insert = d.session_file, simple, "cat=(session.path), (d.hash), .torrent"
 
 # Watch directories (add more as you like, but use unique schedule names)
-#schedule2 = watch_start, 10, 10, ((load.start_verbose, (cat, (cfg.watch), "start/*.torrent")))
-#schedule2 = watch_load, 11, 10, ((load.verbose, (cat, (cfg.watch), "load/*.torrent")))
 schedule2 = watch, 10, 10, ((load.start_verbose, (cat, (cfg.watch), "*.torrent")))
 
 method.insert = d.get_finished_dir, simple, "cat=/home/rtorrent/rtorrent/downloaded/,$d.custom1="
 method.insert = d.get_data_full_path, simple, "branch=((d.is_multi_file)),((cat,(d.directory))),((cat,(d.directory),/,(d.name)))"
 method.insert = d.move_to_complete, simple, "execute=mkdir,-p,$argument.1=; execute=cp,-rp,$argument.0=,$argument.1=; d.stop=; d.directory.set=$argument.1=; d.start=;d.save_full_session=; execute=rm, -r, $argument.0="
 method.set_key = event.download.finished,move_complete,"d.move_to_complete=$d.get_data_full_path=,$d.get_finished_dir="
-
-# Run the rTorrent process as a daemon in the background
-# (and control via XMLRPC sockets)
-#system.daemon.set = true
-#network.scgi.open_local = (cat,(session.path),rtorrent.sock)
-#execute.nothrow = chmod,770,(cat,(session.path),rtorrent.sock)
 
 # Logging:
 #   Levels = critical error warn notice info debug
