@@ -2,17 +2,21 @@ FROM alpine
 
 RUN apk add --no-cache rtorrent && \
     apk add --no-cache screen && \
-    apk add --no-cache nano && \
-    adduser rtorrent -D && \
-    mkdir -p /home/rtorrent/rtorrent && \
+    apk add --no-cache nano
+
+RUN adduser rtorrent -D
+
+RUN mkdir -p /home/rtorrent/rtorrent && \
     mkdir /home/rtorrent/rtorrent/downloaded && \
     mkdir /home/rtorrent/rtorrent/downloading && \
     mkdir /home/rtorrent/rtorrent/logs && \
     mkdir /home/rtorrent/rtorrent/session && \
-    mkdir /home/rtorrent/rtorrent/watch && \
-    chown -R rtorrent:rtorrent /home/rtorrent/rtorrent
+    mkdir /home/rtorrent/rtorrent/watch
 
 COPY rtorrent.rc "/home/rtorrent/.rtorrent.rc"
+
+RUN chown rtorrent:rtorrent "/home/rtorrent/.rtorrent.rc" && \
+    chown -R rtorrent:rtorrent /home/rtorrent/rtorrent
 
 VOLUME ["/home/rtorrent/rtorrent/downloaded", \
         "/home/rtorrent/rtorrent/downloading", \
