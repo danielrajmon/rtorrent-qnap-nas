@@ -31,14 +31,14 @@ protocol.pex.set = no
 trackers.use_udp.set = no
 
 # Peer settings
-throttle.max_uploads.set = 100
-throttle.max_uploads.global.set = 250
+throttle.max_uploads.set = 2000
+throttle.max_uploads.global.set = 2000
 
-throttle.min_peers.normal.set = 1
+throttle.min_peers.normal.set = 20
 throttle.max_peers.normal.set = 60
 throttle.min_peers.seed.set = 30
 throttle.max_peers.seed.set = 80
-trackers.numwant.set = 40
+trackers.numwant.set = 80
 
 protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
 
@@ -48,7 +48,7 @@ network.max_open_files.set = 6000
 network.max_open_sockets.set = 3000
 
 # Memory resource usage (increase if you have a large number of items loaded, and/or the available resources to spend)
-pieces.memory.max.set = 3600M
+pieces.memory.max.set = 4000M
 network.xmlrpc.size_limit.set = 4M
 
 # Basic operational settings (no need to change these)
