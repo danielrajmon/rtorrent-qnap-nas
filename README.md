@@ -8,9 +8,12 @@ This lightweight image is optimized to manage thousands of loaded torrents effic
 Done based on rtorrent's official documentation.
 
 ## Building
+```bash
 docker build -t rtorrent-qnap-nas .
+```
 
 ## Executing image (replace /Users/danielrajmon/rtorrent/* folders)
+```bash
 docker run -d \
   -v /Users/danielrajmon/rtorrent/downloaded:/home/rtorrent/rtorrent/downloaded \
   -v /Users/danielrajmon/rtorrent/downloading:/home/rtorrent/rtorrent/downloading \
@@ -18,6 +21,7 @@ docker run -d \
   -v /Users/danielrajmon/rtorrent/session:/home/rtorrent/rtorrent/session \
   -v /Users/danielrajmon/rtorrent/watch:/home/rtorrent/rtorrent/watch \
   rtorrent-qnap-nas
+```
 
 ## Starting rtorrent
 This step is not automatic yet as I need to test session folder discrepancies caused by sudden shutdowns.
@@ -36,6 +40,7 @@ Container station -> Volumes ->
 - Create -> watch
 
 ### Moving folders to HDD
+```bash
 ssh -> sudo -i
 
 mkdir /share/CACHEDEV3_DATA/Media-1/rtorrent
@@ -53,21 +58,26 @@ cd downloading; ln -s /share/CACHEDEV3_DATA/Media-1/rtorrent/downloading _data; 
 cd logs; ln -s /share/CACHEDEV3_DATA/Media-1/rtorrent/logs _data; cd ..
 cd session; ln -s /share/CACHEDEV3_DATA/Media-1/rtorrent/session _data; cd ..
 cd watch; ln -s /share/CACHEDEV3_DATA/Media-1/rtorrent/watch _data; cd ..
+```
 
 ### Setting folder permissions
+```bash
 chown pampi:everyone /share/CACHEDEV3_DATA/Media-1/rtorrent
 chown pampi:everyone /share/CACHEDEV3_DATA/Media-1/rtorrent/downloaded
 chown pampi:everyone /share/CACHEDEV3_DATA/Media-1/rtorrent/downloading
 chown pampi:everyone /share/CACHEDEV3_DATA/Media-1/rtorrent/logs
 chown pampi:everyone /share/CACHEDEV3_DATA/Media-1/rtorrent/session
 chown pampi:everyone /share/CACHEDEV3_DATA/Media-1/rtorrent/watch
+```
 
 ## Publishing for QNAP NAS
+```bash
 git log -1 --pretty=%H
 docker image build -t danielrajmon/rtorrent-qnap-nas:COMMIT_NUMBER --build-arg VERSION=1.5 --platform linux/amd64 .
 docker image tag danielrajmon/rtorrent-qnap-nas:COMMIT_NUMBER danielrajmon/rtorrent-qnap-nas:latest
 docker image push danielrajmon/rtorrent-qnap-nas:COMMIT_NUMBER
 docker image push danielrajmon/rtorrent-qnap-nas:latest
+```
 
 ## TODO
 - Autostart rtorrent in screen
