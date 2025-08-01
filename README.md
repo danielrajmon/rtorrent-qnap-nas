@@ -43,31 +43,31 @@ Container station -> Volumes ->
 ```bash
 ssh -> sudo -i
 
-mkdir /share/CACHEDEV3_DATA/Media-1/rtorrent
+mkdir /share/CE_CACHEDEV3_DATA/hdd1/rtorrent
 
-cd /share/CACHEDEV1_DATA/Public/container-station-data/lib/docker/volumes
+cd /share/CACHEDEV1_DATA/Container/container-station-data/lib/docker/volumes
 
-mv ./downloaded/_data /share/CACHEDEV3_DATA/Media-1/rtorrent/downloaded
-mv ./downloading/_data /share/CACHEDEV3_DATA/Media-1/rtorrent/downloading
-mv ./logs/_data /share/CACHEDEV3_DATA/Media-1/rtorrent/logs
-mv ./session/_data /share/CACHEDEV3_DATA/Media-1/rtorrent/session
-mv ./watch/_data /share/CACHEDEV3_DATA/Media-1/rtorrent/watch
+mv ./downloaded/_data /share/CE_CACHEDEV3_DATA/hdd1/rtorrent/downloaded
+mv ./downloading/_data /share/CE_CACHEDEV3_DATA/hdd1/rtorrent/downloading
+mv ./logs/_data /share/CE_CACHEDEV3_DATA/hdd1/rtorrent/logs
+mv ./session/_data /share/CE_CACHEDEV3_DATA/hdd1/rtorrent/session
+mv ./watch/_data /share/CE_CACHEDEV3_DATA/hdd1/rtorrent/watch
 
-cd downloaded; ln -s /share/CACHEDEV3_DATA/Media-1/rtorrent/downloaded _data; cd ..
-cd downloading; ln -s /share/CACHEDEV3_DATA/Media-1/rtorrent/downloading _data; cd ..
-cd logs; ln -s /share/CACHEDEV3_DATA/Media-1/rtorrent/logs _data; cd ..
-cd session; ln -s /share/CACHEDEV3_DATA/Media-1/rtorrent/session _data; cd ..
-cd watch; ln -s /share/CACHEDEV3_DATA/Media-1/rtorrent/watch _data; cd ..
+cd downloaded; ln -s /share/CE_CACHEDEV3_DATA/hdd1/rtorrent/downloaded _data; cd ..
+cd downloading; ln -s /share/CE_CACHEDEV3_DATA/hdd1/rtorrent/downloading _data; cd ..
+cd logs; ln -s /share/CE_CACHEDEV3_DATA/hdd1/rtorrent/logs _data; cd ..
+cd session; ln -s /share/CE_CACHEDEV3_DATA/hdd1/rtorrent/session _data; cd ..
+cd watch; ln -s /share/CE_CACHEDEV3_DATA/hdd1/rtorrent/watch _data; cd ..
 ```
 
 ### Setting folder permissions
 ```bash
-chown pampi:everyone /share/CACHEDEV3_DATA/Media-1/rtorrent
-chown pampi:everyone /share/CACHEDEV3_DATA/Media-1/rtorrent/downloaded
-chown pampi:everyone /share/CACHEDEV3_DATA/Media-1/rtorrent/downloading
-chown pampi:everyone /share/CACHEDEV3_DATA/Media-1/rtorrent/logs
-chown pampi:everyone /share/CACHEDEV3_DATA/Media-1/rtorrent/session
-chown pampi:everyone /share/CACHEDEV3_DATA/Media-1/rtorrent/watch
+chown pampi:everyone /share/CE_CACHEDEV3_DATA/hdd1/rtorrent
+chown pampi:everyone /share/CE_CACHEDEV3_DATA/hdd1/rtorrent/downloaded
+chown pampi:everyone /share/CE_CACHEDEV3_DATA/hdd1/rtorrent/downloading
+chown pampi:everyone /share/CE_CACHEDEV3_DATA/hdd1/rtorrent/logs
+chown pampi:everyone /share/CE_CACHEDEV3_DATA/hdd1/rtorrent/session
+chown pampi:everyone /share/CE_CACHEDEV3_DATA/hdd1/rtorrent/watch
 ```
 
 ## Publishing for QNAP NAS
